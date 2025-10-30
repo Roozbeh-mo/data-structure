@@ -18,6 +18,7 @@ class Stack:
             k = self.list[-1]
             self.list.pop()
             print(f"{k} deleted")
+            return k
     def show(self):
         print(self.list)
             
@@ -26,19 +27,22 @@ class Stack:
             print("Stack is empty")
             return
         else:
+            flag = False
             for i in range(0,len(self.list)):
                 if self.list[i]==item:
-                    print(f"{item} is on {i} index")
-                    return
-                else:
-                    print(f"{item} doesn't exist")
-                    return
+                    print(f"{item} is on index {i}")
+                    flag = True
+            if flag:
+                return
+            else:
+                print(f"{item} doesn't exist")
                 
     def replace(self,old,new):
         if not self.list:
             print("Stack is empty")
             return
         else:
+            flag = False
             for i in range(0,len(self.list)):
                 if self.list[i] ==old:
                     self.list[i]=new
@@ -53,22 +57,4 @@ class Stack:
             return
         else:
             print(self.list[-1])
-            return 
-c =Stack(5)
-c.push(1)
-c.push(2)
-c.push(3)
-c.push(4)
-c.push(5)
-c.push(6)
-c.push(7)
-c.show()
-c.pop()
-c.show()
-c.peek()
-c.replace(4,999)
-c.show()
-
-
-
-
+            return self.list[-1]
