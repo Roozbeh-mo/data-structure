@@ -5,7 +5,7 @@ class Queue:
         self.rear=-1
         self.limit=limit
     def is_full(self):
-        if len(self.list)>=self.limit:
+        if self.rear+1==self.limit:
             return True
         else:
             return False
@@ -15,7 +15,7 @@ class Queue:
         else:
             return False
     def one_item(self):
-        if self.rear==0:
+        if self.front == self.rear:
             return True
         else:
             return False
@@ -28,11 +28,11 @@ class Queue:
         if self.is_empty():
             self.front=0
             self.rear=0
-            self.list[self.rear]=item
+            self.list.append(item)
             print(f"{item} added")
             return
+        self.list.append(item)
         self.rear+=1
-        self.list[self.rear]=item
         print(f"{item} added")
     
     def remo(self):
@@ -66,14 +66,13 @@ class Queue:
         if self.is_empty():
             print("queue is empty")
             return
-        if self.front=0
+        if self.front==0:
+            print("shift ok")
+            return
         count=self.rear - self.front+1
         for i in range(count):
             self.list[i]=self.list[self.front+i]
         self.list = self.list[:count]
         self.front=0
         self.rear=count-1
-
-                
-        
-            
+        print("shift ok")
